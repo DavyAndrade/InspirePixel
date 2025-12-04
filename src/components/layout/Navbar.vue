@@ -18,7 +18,7 @@ const toggleMenu = () => {
   <header class="navbar">
     <!-- Mobile Container (< 768px) -->
     <div class="navbar__mobile">
-      <a href="#" class="navbar__logo">
+      <a href="#hero" class="navbar__logo">
         <img src="../../assets/icons/logo.svg" alt="Logo InspirePixel" />
       </a>
 
@@ -47,7 +47,7 @@ const toggleMenu = () => {
 
     <!-- Tablet/Desktop Container (>= 768px) -->
     <div class="navbar__desktop">
-      <a href="#" class="navbar__logo">
+      <a href="#hero" class="navbar__logo">
         <img src="../../assets/icons/logo.svg" alt="Logo InspirePixel" />
       </a>
 
@@ -60,7 +60,7 @@ const toggleMenu = () => {
         <!-- Navigation Items -->
         <nav class="navbar__nav">
           <ul class="navbar__links">
-            <li><a href="#" class="navbar__link">Início</a></li>
+            <li><a href="#hero" class="navbar__link">Início</a></li>
             <li><a href="#" class="navbar__link">Galeria</a></li>
             <li><a href="#" class="navbar__link">Favoritos</a></li>
           </ul>
@@ -79,7 +79,7 @@ const toggleMenu = () => {
         <nav>
           <ul class="navbar__mobile-links">
             <li>
-              <a href="#" class="navbar__mobile-link" @click="toggleMenu"
+              <a href="#hero" class="navbar__mobile-link" @click="toggleMenu"
                 >Início</a
               >
             </li>
