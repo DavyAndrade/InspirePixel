@@ -25,6 +25,8 @@ $text-color: #1f2937;
   align-items: center;
   padding: 4rem 1rem;
   gap: 2rem;
+  max-width: 1024px;
+  margin: 0 auto;
   color: $text-color;
 
   &__image {
@@ -71,7 +73,6 @@ $text-color: #1f2937;
     flex-direction: row-reverse;
     justify-content: space-evenly;
     align-items: center;
-    padding: 4rem 5rem;
     gap: 1rem;
     height: 100vh;
     width: 100%;

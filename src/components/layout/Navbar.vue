@@ -18,7 +18,7 @@ const toggleMenu = () => {
   <header class="navbar">
     <!-- Mobile Container (< 768px) -->
     <div class="navbar__mobile">
-      <a href="#hero" class="navbar__logo">
+      <a href="#" class="navbar__logo">
         <img src="../../assets/icons/logo.svg" alt="Logo InspirePixel" />
       </a>
 
@@ -47,7 +47,7 @@ const toggleMenu = () => {
 
     <!-- Tablet/Desktop Container (>= 768px) -->
     <div class="navbar__desktop">
-      <a href="#hero" class="navbar__logo">
+      <a href="#" class="navbar__logo">
         <img src="../../assets/icons/logo.svg" alt="Logo InspirePixel" />
       </a>
 
@@ -61,7 +61,7 @@ const toggleMenu = () => {
         <nav class="navbar__nav">
           <ul class="navbar__links">
             <li><a href="#hero" class="navbar__link">Início</a></li>
-            <li><a href="#" class="navbar__link">Galeria</a></li>
+            <li><a href="#gallery" class="navbar__link">Galeria</a></li>
             <li><a href="#" class="navbar__link">Favoritos</a></li>
           </ul>
         </nav>
@@ -84,7 +84,7 @@ const toggleMenu = () => {
               >
             </li>
             <li>
-              <a href="#" class="navbar__mobile-link" @click="toggleMenu"
+              <a href="#gallery" class="navbar__mobile-link" @click="toggleMenu"
                 >Galeria</a
               >
             </li>
@@ -114,7 +114,7 @@ $border-color: #e5e7eb;
 $transition-speed: 0.3s;
 
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
