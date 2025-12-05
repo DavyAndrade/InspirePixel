@@ -22,10 +22,12 @@ $text-color: #1f2937;
 .hero {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 4rem 1rem;
+  padding: 5rem 1rem;
   gap: 2rem;
   max-width: 1024px;
+  min-height: 100vh;
   margin: 0 auto;
   color: $text-color;
 
