@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { Heart } from "lucide-vue-next";
+import axios from "axios";
+import Card from "../ui/Card.vue";
 
 const images = ref([]);
 
@@ -8,11 +9,10 @@ const fetchImages = async () => {
   try {
     // Randomize page to get different images (avoiding the default "computer" heavy page 1)
     const randomPage = Math.floor(Math.random() * 20) + 1;
-    const response = await fetch(
+    const response = await axios.get(
       `https://picsum.photos/v2/list?page=${randomPage}&limit=12`
     );
-    const data = await response.json();
-    images.value = data.map((img) => ({
+    images.value = response.data.map((img) => ({
       id: img.id,
       url: `https://picsum.photos/id/${img.id}/600/900`, // Portrait aspect ratio
       author: img.author,
@@ -41,29 +41,7 @@ onMounted(() => {
 
     <div class="gallery-grid">
       <div v-for="image in images" :key="image.id" class="gallery-item">
-        <div class="image-wrapper">
-          <img
-            :src="image.url"
-            :alt="`Photo by ${image.author}`"
-            loading="lazy"
-          />
-          <button
-            class="favorite-btn"
-            @click="toggleFavorite(image.id)"
-            :aria-label="
-              image.isFavorite
-                ? 'Remover dos favoritos'
-                : 'Adicionar aos favoritos'
-            "
-          >
-            <Heart
-              :class="{ 'is-active': image.isFavorite }"
-              :fill="image.isFavorite ? '#ef4444' : 'none'"
-              :stroke="image.isFavorite ? '#ef4444' : 'white'"
-              :stroke-width="2"
-            />
-          </button>
-        </div>
+        <Card :image="image" @toggle-favorite="toggleFavorite" />
       </div>
     </div>
   </section>
@@ -72,8 +50,12 @@ onMounted(() => {
 <style scoped lang="scss">
 .gallery-section {
   padding: 2rem 1rem;
-  max-width: 1024px;
+  max-width: 768px;
   margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    max-width: 1024px;
+  }
 }
 
 .gallery-title {
@@ -118,51 +100,6 @@ onMounted(() => {
     &:nth-child(n + 10) {
       display: block;
     }
-  }
-}
-
-.image-wrapper {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  aspect-ratio: 2/3; // Portrait ratio
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-}
-
-.favorite-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
-  transition: transform 0.2s ease;
-  z-index: 10;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-
-  svg {
-    width: 24px;
-    height: 24px;
-    filter: drop-shadow(
-      0 2px 4px rgba(0, 0, 0, 0.3)
-    ); // Shadow for visibility on light images
-    transition: all 0.3s ease;
   }
 }
 </style>

@@ -25,9 +25,13 @@ $text-color: #1f2937;
   align-items: center;
   padding-block: 5rem;
   gap: 2rem;
-  max-width: 1024px;
+  max-width: 768px;
   margin: 0 auto;
   color: $text-color;
+
+  @media (min-width: 1024px) {
+    max-width: 1024px;
+  }
 
   &__image {
     display: flex;
